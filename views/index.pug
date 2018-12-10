@@ -1,5 +1,23 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div.center
+        h1= title
+        p Welcome to #{title}
+        a(href='/users') users
+    script( type="x-shader/x-vertex" id="vertexshader").
+        attribute float scale;
+        void main() {
+            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+            gl_PointSize = scale * ( 300.0 / - mvPosition.z );
+            gl_Position = projectionMatrix * mvPosition;
+        }
+    script( type="x-shader/x-fragment" id="fragmentshader").
+        uniform vec3 color;
+        void main() {
+            if ( length(gl_PointCoord - vec2(0.5, 0.5)) > 0.475 ) discard;
+            gl_FragColor = vec4( color, 1.0 );
+        }
+    script(src='javascripts/threejs-waves.js')
+    script(src='javascripts/canvas-nest.js',type="text/javascript" ,color="100,100,100" pointColor='100,10,100' ,opacity='0.7' ,zIndex="1" ,count="99")
+
