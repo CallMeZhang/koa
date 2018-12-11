@@ -1,18 +1,13 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	h1(style='color:#000')= title
 	div#app
-		p.
-			{{message}}
 		el-table(:data="tableData",style="width: 100%" )
 			el-table-column(prop="ip",label="ip" )
 			el-table-column(prop="address",label="地址")
-	script( src="//unpkg.com/iview/dist/iview.min.js")
-	script( src="https://unpkg.com/element-ui/lib/index.js")
 	script.
-		var app = new Vue({
+		new Vue({
 			el: '#app',
 			data: {
 				tableData:!{JSON.stringify(tableData)},

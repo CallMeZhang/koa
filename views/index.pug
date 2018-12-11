@@ -1,10 +1,14 @@
 extends layout
 
 block content
-    div.center
-        h1= title
-        p Welcome to #{title}
+    div.top
+        p 您当前访问的ip : #{ip}
+    div.center.font20
+        h1.font26.marginB10= title
+        p 基于 koa2 + pug + vue 的站点实现
         a(href='/users') users
+    - var riskyBusiness =`<span class="fr">人<br/>间<br/>草<br/>木<br/>深</span><span class="fr marginT20 marginR20">我<br/>心<br/>桃<br/>花<br/>源</span>`
+    .top-left.aquamarine !{riskyBusiness}
     script( type="x-shader/x-vertex" id="vertexshader").
         attribute float scale;
         void main() {
@@ -19,5 +23,5 @@ block content
             gl_FragColor = vec4( color, 1.0 );
         }
     script(src='javascripts/threejs-waves.js')
-    script(src='javascripts/canvas-nest.js',type="text/javascript" ,color="100,100,100" pointColor='100,10,100' ,opacity='0.7' ,zIndex="1" ,count="99")
+    script(src='javascripts/canvas-nest.js',type="text/javascript" ,color="100,100,100" ,pointColor='100,10,100' ,opacity='0.7' ,zIndex="1" ,count="99")
 
