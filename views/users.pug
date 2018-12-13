@@ -1,16 +1,17 @@
 extends layout
 
 block content
-	h1(style='color:#000')= title
-	div#app
-		el-table(:data="tableData",style="width: 100%" )
-			el-table-column(prop="ip",label="ip" )
-			el-table-column(prop="address",label="地址")
-	script.
-		new Vue({
-			el: '#app',
-			data: {
-				tableData:!{JSON.stringify(tableData)},
-				message: 'Hello Vue!'
-			}
-		})
+    h1(style='color:#000')= title
+    div#app
+        el-table(:data="tableData",style="width: 100%" )
+            el-table-column(prop="ip",label="ip" )
+            el-table-column(prop="address",label="地址")
+            el-table-column(prop="views",label="访问次数")
+    script.
+        new Vue({
+            el: '#app',
+            data: {
+                tableData: !{JSON.stringify(tableData)},
+                    message: 'Hello Vue!'
+            }
+        })
