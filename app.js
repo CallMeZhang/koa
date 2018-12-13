@@ -5,13 +5,19 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const session = require("koa-session2");
 
 const index = require('./routes/index')
 const users = require('./routes/users')
 
+const Store = require("./src/store/store");
 // error handler
 onerror(app)
 
+//session
+app.use(session({
+	store:new Store()
+}))
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
@@ -24,6 +30,18 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+//登陆拦截
+// app.use(async (ctx, next) => {
+//   console.log(ctx)
+// 	if(!ctx.cookies.get('koa:sess') && ctx.path !== '/users/login'){
+// 		console.log(ctx.cookies.get('koa:sess'),ctx.path)
+// 		await ctx.render('index',{
+// 			title:'请登录'
+// 		})
+// 		return;
+// 	}
+// 	next()
+// })
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
