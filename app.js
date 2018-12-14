@@ -54,6 +54,12 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
+app.use(async (ctx, next)=>{
+	if(ctx.response.status == 404){
+		ctx.response.redirect('/404');
+	}
+	await next();
+})
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)

@@ -1,12 +1,32 @@
 extends layout
 
 block content
-    div.top
+    div(class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+        div( class="modal-dialog" role="document")
+            div(class="modal-content")
+                div( class="modal-header")
+                    h5( class="modal-title" id="exampleModalLabel") User login
+                    button( type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span( aria-hidden="true") &times;
+                div( class="modal-body")
+                    form(method='post' action='/api/user' onsubmit="checkForm()")
+                        div.form-group
+                            label(for="exampleInputEmail1") User Name
+                            input(type="text" name='name' required='required' class="form-control"  id="exampleInputEmail1"  aria-describedby="emailHelp" placeholder="Enter UserName")
+                            small( id="emailHelp" class="form-text text-muted") We'll never share your name with anyone else.
+                        div.form-group
+                            label(for="exampleInputPassword1") Password
+                            input(type="password" name='password' required='required' class="form-control" id="exampleInputPassword1" placeholder="Password")
+                        div( class="modal-footer")
+                            button( type="button" class="btn btn-secondary" data-dismiss="modal") Close
+                            button(type="submit" class="btn btn-primary" ) Submit
+    div.top.gry
         p 您当前访问的ip : #{ip} views : #{views}
-    div.center.font20
-        h1.font26.marginB10= title
-        p 基于 koa2 + pug + vue 的站点实现
-        a(href='/users') users
+    div.center.font20.gry
+        h1.font26.marginB10.gry= title
+        p.gry 基于 koa2 + pug + vue 的站点实现
+        a()
+            button(type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal") Login
     - var riskyBusiness =`<span class="fr">人<br/>间<br/>草<br/>木<br/>深</span><span class="fr marginT20 marginR20">我<br/>心<br/>桃<br/>花<br/>源</span>`
     .top-left.aquamarine !{riskyBusiness}
     script( type="x-shader/x-vertex" id="vertexshader").
@@ -24,4 +44,6 @@ block content
         }
     script(src='javascripts/threejs-waves.js')
     script(src='javascripts/canvas-nest.js',type="text/javascript" ,color="100,100,100" ,pointColor='100,10,100' ,opacity='0.7' ,zIndex="1" ,count="99")
+    script
+        include ../public/javascripts/index/index.js
 

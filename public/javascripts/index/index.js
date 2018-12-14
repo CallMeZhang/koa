@@ -1,0 +1,4 @@
+function checkForm()
+{
+	return false
+}

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div( class="error404")
+        div( class="error404-body-con")
+            div( class="box-card")
+                div( class="error404-body-con-title") 4&nbsp;
+                    span 0
+                    |&nbsp;4
+            p( class="error404-body-con-message") YOU&nbsp;&nbsp;LOOK&nbsp;&nbsp;LOST
+            div( class="error404-btn-con")
+                button.blue.first(  onclick="goHome()" size="large" style="width: 200px;" type="text") 返回首页
+                button.second( onclick="backPage()" size="large" style="width: 200px;" type="primary") 返回上一页
+    script.
+        function backPage() {
+            history.go(-1)
+        }
+        function goHome() {
+            window.location.href='/'
+        }

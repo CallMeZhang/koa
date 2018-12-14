@@ -6,8 +6,15 @@ router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'
 })
 
-router.get('/bar', function (ctx, next) {
-  ctx.body = 'this is a users/bar response'
+router.post('/user', function (ctx, next) {
+	var name = ctx.request.body.name || ``
+	var password = ctx.request.body.password || ``
+	console.log(`用户${name}请求登录,密码是${password}`)
+	// console.log(typeof ctx.session.user)
+	// if(!ctx.session.user){
+		ctx.session.user = JSON.stringify({userName: name, 'password': password})
+	// }
+	ctx.response.redirect('/users');
 })
 
 router.get('/string', async (ctx, next) => {

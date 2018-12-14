@@ -19,7 +19,6 @@ a {
 body.content{
   overflow: hidden;
   overflow-y:scroll ;
-  color: #e3e3e3;
 }
 .top{
   position: absolute;
@@ -54,4 +53,112 @@ body.content{
 }
 .aquamarine{
   color: aquamarine;
+}
+.gry{
+  color: #e3e3e3;
+}
+button{
+  outline:none;
+  cursor: pointer;
+}
+@keyframes error404animation {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  20% {
+    transform: rotateZ(-60deg);
+  }
+  40% {
+    transform: rotateZ(-10deg);
+  }
+  60% {
+    transform: rotateZ(50deg);
+  }
+  80% {
+    transform: rotateZ(-20deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+.error404-body-con-title {
+  text-align: center;
+  font-size: 240px;
+  font-weight: 700;
+  color: rgb(45, 140, 240);
+  height: 260px;
+  line-height: 260px;
+  margin-top: 40px;
+}
+.error404-body-con-title span {
+  display: inline-block;
+  color: rgb(25, 190, 107);
+  font-size: 230px;
+  animation: error404animation 3s ease 0s infinite alternate;
+}
+.error404-body-con-title {
+  text-align: center;
+  font-size: 240px;
+  font-weight: 700;
+  color: rgb(45, 140, 240);
+  height: 260px;
+  line-height: 260px;
+  margin-top: 40px;
+}
+.error404-body-con-message {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 12px;
+  color: rgb(221, 221, 226);
+}
+.error404-body-con {
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.el-card.is-always-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none!important;
+}
+.el-card {
+  border: 1px solid #ebeef5;
+  background-color: #fff;
+  color: #303133;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+.el-card, .el-message {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.blue{
+  color: #3a8ee6;
+}
+.error404-btn-con{
+  display: flex;
+  justify-content: space-around;
+}
+.error404-btn-con>button{
+
+  border: 0;
+  color: #409EFF;
+  background: 0 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.error404-btn-con>.first{
+
+}
+.error404-btn-con>.second{
+  background: #3a8ee6;
+  border-color: #3a8ee6;
+  color: #fff;
+  padding:12px 0;
+  border-radius: 6px;
 }
