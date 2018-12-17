@@ -10,7 +10,7 @@ router.get('/', async (ctx, next) => {
 		ctx.session.views=1
 	}
 	await ctx.render('index', {
-		title: 'Hello world !',
+		title: ctx.session.views>1?'Welcome Back!':'Hello Stranger!',
 		ip: getClientIp(ctx.req),
 		views: ctx.session.views
 	})
