@@ -4,7 +4,7 @@
 module.exports = {
   username: 'root',
   password: '123456',
-  host: '127.0.0.1',
+  host: '47.93.31.23',
   port: 3306,
   name: 'test'
 }
