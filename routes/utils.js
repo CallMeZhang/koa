@@ -3,6 +3,9 @@ function getClientIp(req) {
 		req.connection.remoteAddress ||
 		req.socket.remoteAddress ||
 		req.connection.socket.remoteAddress;
-	return ip.substring(7)
-};
+	if(ip.indexOf('::ffff:')!=-1){
+		return ip.substring(7)
+	}
+	return ip
+}
 module.exports =getClientIp

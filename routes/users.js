@@ -7,19 +7,8 @@ const sql = require('./api/model/sql.js')
 router.prefix('/api')
 
 router.get('/', async function (ctx, next) {
-	db.query(sql.index,  (err, rows, fields)=>{
-		if (err) {
-			throw err
-		}
-		let result = JSON.parse(JSON.stringify(rows))
-		console.log(result)
-		// console.dir(ctx.body)
-		console.dir(ctx.response)
-		ctx.response.body=result
-		// ctx.body(result)
-		// 检查是否存在获取值（redis）
-	})
-  ctx.body = await 'this is a users response!'
+	var {err, rows, fields} = await db.query(sql.index)
+	ctx.body = rows
 })
 
 router.post('/user', function (ctx, next) {
@@ -28,16 +17,16 @@ router.post('/user', function (ctx, next) {
 	console.log(`用户${name}请求登录,密码是${password}`)
 	// console.log(typeof ctx.session.user)
 	// if(!ctx.session.user){
-		ctx.session.user = JSON.stringify({userName: name, 'password': password})
+	ctx.session.user = JSON.stringify({userName: name, 'password': password})
 	// }
 	console.log(ctx)
 	ctx.response.redirect('/users');
 })
 
-router.get('/string', async (ctx, next) => {
-	console.log(ctx)
-	console.log(ctx.body)
-	ctx.body = 'koa2 string'
+router.get('/addUser', async (ctx, next) => {
+	let pramse = ctx.request.body
+	// var {err, rows, fields} = await db.query(sql.addUser())
+	ctx.body = 'pramse'
 })
 
 router.get('/json', async (ctx, next) => {
